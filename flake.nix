@@ -25,7 +25,7 @@
           cargoLock = { lockFile = ./Cargo.lock; };
 
           # put a POSIX shell on $PATH so the 'shebang' test passes
-          nativeBuildInputs = [ pkgs.bash ];
+          checkInputs = [ pkgs.bashInteractive ];     # ← available only during tests
 
           # optional bells & whistles
           cargoBuildFlags = [ "--verbose" "--color" "always" ];
