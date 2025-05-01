@@ -16,21 +16,20 @@
         };
         rust = pkgs.rust-bin.stable.latest.default;
       in rec {
-        # ── Build the binary ────────────────────────────────────────────────
+        # ── Build the binary ──────────────────────────────────────────────
         packages.default = pkgs.rustPlatform.buildRustPackage {
           pname   = "just";
-          # pull version from Cargo.toml automatically
           version = (builtins.fromTOML (builtins.readFile ./Cargo.toml)).package.version;
-          src     = self;             # use the flake’s directory
+          src     = self;
           cargoLock = { lockFile = ./Cargo.lock; };
 
+          # skip the flaky shebang test
           doCheck = false;
 
-          # optional bells & whistles
           cargoBuildFlags = [ "--verbose" "--color" "always" ];
         };
 
-        # ── Dev shell (rust toolchain) ─────────────────────────────────────
+        # ── Dev shell ─────────────────────────────────────────────────────
         devShells.default = pkgs.mkShell {
           buildInputs = [ rust ];
         };
