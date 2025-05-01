@@ -25,7 +25,7 @@
           cargoLock = { lockFile = ./Cargo.lock; };
 
           # optional bells & whistles
-          cargoBuildFlags = [ "--features" "completions" ];
+          cargoBuildFlags = [ "--verbose" "--color" "always" ];
         };
 
         # ── Dev shell (rust toolchain) ─────────────────────────────────────
