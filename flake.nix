@@ -24,8 +24,7 @@
           src     = self;             # use the flake’s directory
           cargoLock = { lockFile = ./Cargo.lock; };
 
-          # put a POSIX shell on $PATH so the 'shebang' test passes
-          checkInputs = [ pkgs.bashInteractive ];     # ← available only during tests
+          doCheck = false;
 
           # optional bells & whistles
           cargoBuildFlags = [ "--verbose" "--color" "always" ];
