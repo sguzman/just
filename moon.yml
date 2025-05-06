@@ -6,39 +6,3 @@ project:
   name: 'just'
   description: 'A task runner'
   maintainers: ['salvador.guzman']
-
-tasks:
-  # 🔎 1. Fast dev checks (unchanged)
-  check:
-    command: nix
-    args:
-      - develop
-      - .#
-      - --command
-      - cargo
-      - check
-      - --workspace
-      - --all-targets
-    inputs:
-      - "**/*.rs"
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "flake.nix?"
-
-  # 📦 2. Reproducible package built by **nix build**
-  build:
-    command: nix
-    args:
-      - build
-      - .#                # or .#jj if you expose a named attr
-      - --print-out-paths
-    inputs:
-      # include flake.lock so rebuilds trigger only on hash changes
-      - "**/*.rs"
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "flake.nix"
-      - "flake.lock"
-    outputs:
-      # nix drops results under ./result by default
-      - "result/**"
