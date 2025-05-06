@@ -1,7 +1,11 @@
 $schema: "https://moonrepo.dev/schemas/project.json"
 language: "rust"
-dependsOn:
-  - moon                # project-level dep – unchanged
+type: "tool"
+
+project:
+  name: 'just'
+  description: 'A task runner'
+  maintainer: ['salvador.guzman']
 
 tasks:
   # 🔎 1. Fast dev checks (unchanged)
