@@ -5,7 +5,7 @@ type: "tool"
 project:
   name: 'just'
   description: 'A task runner'
-  maintainer: ['salvador.guzman']
+  maintainers: ['salvador.guzman']
 
 tasks:
   # 🔎 1. Fast dev checks (unchanged)
